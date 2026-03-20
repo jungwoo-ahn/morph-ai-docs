@@ -297,6 +297,62 @@
     box-shadow: 0 24px 48px -38px rgba(15,19,32,0.3);
   }
 
+  /* ── Image grid ── */
+  .doc-container .img-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 20px 0 28px;
+  }
+  .doc-container .img-grid img { margin: 0; }
+  .doc-container .img-grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin: 20px 0 28px;
+  }
+  .doc-container .img-grid-3 img { margin: 0; border-radius: 12px; }
+  .doc-container .img-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 20px 0 28px;
+  }
+  .doc-container .img-grid-4 img { margin: 0; border-radius: 12px; }
+  @media (max-width: 640px) {
+    .doc-container .img-grid { grid-template-columns: 1fr; }
+    .doc-container .img-grid-3 { grid-template-columns: 1fr 1fr; }
+    .doc-container .img-grid-4 { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* ── Video embed ── */
+  .video-embed {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    margin: 20px 0 28px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--card-border);
+    box-shadow: 0 24px 48px -38px rgba(15,19,32,0.3);
+  }
+  .video-embed iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  /* ── Caption ── */
+  .doc-container .caption {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: -12px;
+    margin-bottom: 24px;
+  }
+
   /* ── Scroll top ── */
   .scroll-top {
     position: fixed;
@@ -388,9 +444,12 @@ window.addEventListener('scroll', () => {
   document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 400);
 });
 
+const I = 'https://morph-ai.app'; // image base
 const D = [];
 
 D[0] = `# Morph AI — Product Showcase
+
+<img src="${I}/morph_logo_new.png" alt="Morph AI Logo" style="width:64px;margin-bottom:8px;border:none;box-shadow:none;background:transparent;">
 
 > **Your always-on chief of staff.**
 > Create or update plans with text, image, PDF, audio, or web context — then let one context-aware assistant move your schedule forward.
@@ -402,9 +461,7 @@ D[0] = `# Morph AI — Product Showcase
 
 ## Demo Video
 
-[![Morph AI Demo Video](https://i.ytimg.com/vi/PuK_Ew2mhWs/hqdefault.jpg)](https://www.youtube.com/watch?v=PuK_Ew2mhWs)
-
-**[Watch the full product demo on YouTube](https://www.youtube.com/watch?v=PuK_Ew2mhWs)**
+<div class="video-embed"><iframe src="https://www.youtube.com/embed/PuK_Ew2mhWs" allowfullscreen></iframe></div>
 
 *Note: This video was recorded during an earlier development stage. The current product is significantly more polished and feature-complete, with full Korean + English bilingual demo support. Visit [morph-ai.app](https://morph-ai.app) to see the latest version live.*
 
@@ -416,13 +473,22 @@ Morph AI is an AI-powered calendar and task management assistant. Users interact
 
 **Core value:** Event creation drops from 30 seconds (traditional UI) to 3 seconds (natural language).
 
+<img src="${I}/demo/chat-usecases-demo.gif" alt="Morph AI use cases demo">
+<div class="caption">Animated demo: various use cases in action</div>
+
 ---
 
 ## Core Features
 
 ### 1. Natural Language Event & Task Creation
 
-Type what you need in plain English (or 9 other languages):
+Type what you need in plain English (or 9 other languages). The AI parses intent, extracts structured data, and presents a **preview card** for confirmation.
+
+<div class="img-grid">
+<img src="${I}/demo/chat-01-multi-event-generation.png" alt="Multi-event generation">
+<img src="${I}/demo/chat-02-task-planning.png" alt="Task planning">
+</div>
+<div class="caption">Left: Creating multiple events from a single message. Right: Task planning with due dates.</div>
 
 | User says | Morph does |
 |---|---|
@@ -431,29 +497,36 @@ Type what you need in plain English (or 9 other languages):
 | "Dentist every Wednesday 11am for 6 weeks" | Generates RRULE, creates recurring event with 6 instances |
 | "Submit project proposal by end of month" | Creates a task with due date |
 
-The AI parses intent, extracts structured data (title, date, time, location, attendees, recurrence), and presents a **preview card** for user confirmation before committing.
-
 ---
 
 ### 2. Image & PDF Event Extraction (GPT-4 Vision)
 
-Upload a screenshot, poster, flyer, or PDF — Morph extracts **all events** automatically.
+Upload a screenshot, poster, flyer, or PDF — Morph extracts **all events** automatically. **No competitor offers this.**
 
-**Use cases:**
-- **Conference schedule poster** — Upload a photo, get 12 sessions extracted with titles, times, and locations
-- **University syllabus PDF** — Upload a 12-page PDF, get 30+ assignment deadlines and class schedules extracted
-- **FC Barcelona match schedule** — Upload a screenshot, get all home games added to your calendar
-- **Event flyer from Instagram** — Screenshot it, upload, done
+<div class="img-grid-3">
+<img src="${I}/demo/sources/ai-conference-timetable.png" alt="Conference timetable">
+<img src="${I}/demo/sources/fcb-schedule.png" alt="FC Barcelona schedule">
+<img src="${I}/demo/sources/golf-lesosn-schedule.png" alt="Golf lesson schedule">
+</div>
+<div class="caption">Example inputs: conference timetable, FC Barcelona schedule, golf lesson schedule — all extractable into calendar events</div>
 
-**No competitor offers this.** This is Morph's most unique feature — GPT-4 Vision-powered visual event extraction.
+More input examples that Morph can process:
+
+<div class="img-grid">
+<img src="${I}/demo/sources/messanger.png" alt="Messenger screenshot extraction">
+<img src="${I}/demo/sources/vc_email.png" alt="Email extraction">
+</div>
+<div class="caption">Even messenger conversations and emails can be captured into events</div>
 
 ---
 
-### 3. Voice Input (Audio Transcription)
+### 3. Recurring Events & Schedule Summaries
 
-Record a voice memo or upload an audio file. Morph transcribes it and converts actionable items into events and tasks.
-
-**Example:** Record a call recap → Morph extracts "Follow-up meeting Thursday 2pm" and "Send proposal by Friday" → Creates one event + one task.
+<div class="img-grid">
+<img src="${I}/demo/chat-04-recurring-plan.png" alt="Recurring event creation">
+<img src="${I}/demo/chat-03-schedule-summary.png" alt="Schedule summary">
+</div>
+<div class="caption">Left: Natural language recurring events with RRULE generation. Right: AI-powered schedule summaries.</div>
 
 ---
 
@@ -461,7 +534,11 @@ Record a voice memo or upload an audio file. Morph transcribes it and converts a
 
 Ask Morph to search the web for event details and add them to your calendar.
 
-**Example:** "Find the Warriors home game schedule and add the next 5 games to my calendar."
+<div class="img-grid">
+<img src="${I}/demo/morph-warriors-prompt.png" alt="Warriors web search prompt">
+<img src="${I}/demo/chat-05-web-search-warriors.png" alt="Warriors web search result">
+</div>
+<div class="caption">Example: "Find the Warriors home game schedule" — Morph searches the web and creates calendar events</div>
 
 ---
 
@@ -473,28 +550,18 @@ Search your calendar and tasks by **meaning**, not just keywords.
 |---|---|
 | "When was my meeting with Kim about Q3 OKRs?" | "Q3 Planning Session" (Oct 15, 2:00 PM) — attendee: Kim |
 | "What decisions did we make about the launch?" | Finds events with relevant descriptions |
-| "What should I prep for Thursday's investor call?" | Surfaces related past meetings and tasks |
 
 **Powered by:** PostgreSQL pgvector embeddings + hybrid lexical/vector search with spelling correction.
 
 ---
 
-### 6. Conversational Editing & Deletion
+### 6. Image-to-Calendar: Real-World Example
 
-- "Move my dentist appointment to next Wednesday 11am"
-- "Add location 123 Oak St to tomorrow's lunch meeting"
-- "Delete all yoga classes this month"
-- "Cancel the Friday standup"
-
-Each change shows a preview diff before applying.
-
----
-
-### 7. Smart Schedule Summaries
-
-- "What do I have today?" → Clean daily overview with events and tasks
-- "What's my week look like?" → Day-by-day breakdown with overdue task alerts
-- "Am I free Thursday afternoon?" → Availability check
+<div class="img-grid">
+<img src="${I}/demo/modern-algebra-class-anouncement.png" alt="Class announcement">
+<img src="${I}/demo/landing-interactive-demo-check.png" alt="Interactive demo result">
+</div>
+<div class="caption">Left: A class announcement image. Right: Morph extracts structured events from it automatically.</div>
 
 ---
 
@@ -502,34 +569,38 @@ Each change shows a preview diff before applying.
 
 ### Three-Panel Layout
 
+<div class="img-grid">
+<img src="${I}/demo/text-screenshot-v1.png" alt="App UI screenshot v1">
+<img src="${I}/demo/text-screenshot-v2.png" alt="App UI screenshot v2">
+</div>
+<div class="caption">The three-panel layout: Tasks (left) | Calendar (center) | AI Chat (right)</div>
+
 | Left Panel | Center Panel | Right Panel |
 |---|---|---|
 | **Tasks** | **Calendar** | **AI Chat** |
 | Filter: All / Active / Done | Month / Week / Day views | Natural language input |
-| Sort: Custom, Due date, Title | Color-coded events by calendar | Preview cards for confirmation |
-| Drag-and-drop reorder | All-day event support | Message history |
-| Subtask hierarchy | Click to edit events | Multi-modal input (text, image, PDF, audio) |
-
-All three panels are collapsible for focused workflows.
+| Sort: Custom, Due date, Title | Color-coded events | Preview cards |
+| Drag-and-drop reorder | All-day events | Multi-modal input |
 
 ---
 
 ## Multi-Language Support
 
-Morph's landing page and AI responses support **10 languages**: English, Korean, Chinese (Simplified), Hindi, Spanish, Arabic (with RTL), French, Portuguese, Russian, Japanese.
+Morph supports **10 languages**: English, Korean, Chinese, Hindi, Spanish, Arabic (RTL), French, Portuguese, Russian, Japanese.
 
 ---
 
 ## Coming Soon: Proactive Mobile Notifications
 
-| Feature | What it does |
-|---|---|
-| **Daily Brief** | Morning summary: "3 meetings today, 2 tasks due, 1 conflict" |
-| **Gap-Fill Nudge** | "You have 45 min free before your 2pm — prep for investor call?" |
-| **Deadline Guard** | "Project proposal due in 2 days — you haven't started. Block time now?" |
-| **Commute Re-plan** | "Traffic on I-405 — leave 15 min early for your 3pm at the client office" |
+Already designed in the codebase — ready for a mobile developer to implement:
 
-Already designed in the codebase — ready for a mobile developer to implement.
+<div class="img-grid-4">
+<img src="${I}/demo/proactive/proactive-mobile-daily-brief.png" alt="Daily Brief">
+<img src="${I}/demo/proactive/proactive-mobile-gap-fill.png" alt="Gap Fill">
+<img src="${I}/demo/proactive/proactive-mobile-deadline-guard.png" alt="Deadline Guard">
+<img src="${I}/demo/proactive/proactive-mobile-commute-replan.png" alt="Commute Re-plan">
+</div>
+<div class="caption">Mobile mockups: Daily Brief · Gap-Fill Nudge · Deadline Guard · Commute Re-plan</div>
 
 ---
 
