@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morph AI — Acquire.com Supporting Documents</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #f6f7fa;
+    --text: #0f1320;
+    --text-secondary: #3f4a63;
+    --text-muted: #59627b;
+    --accent: #5c6dff;
+    --accent-light: #dce5ff;
+    --accent-bg: rgba(92,109,255,0.06);
+    --card-bg: rgba(255,255,255,0.85);
+    --card-border: rgba(15,19,32,0.12);
+    --dark: #11141f;
+    --dark-deep: #0d1018;
+  }
+
+  body {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    position: relative;
+    text-align: center;
+    padding: 100px 24px 80px;
+    background: var(--bg);
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 76% 20%, rgba(92,109,255,0.14), transparent 34%),
+      radial-gradient(circle at 24% 80%, rgba(92,109,255,0.08), transparent 30%);
+    pointer-events: none;
+  }
+  .hero-inner { position: relative; z-index: 1; }
+  .hero .eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: var(--accent);
+    margin-bottom: 20px;
+    padding: 6px 16px;
+    border: 1px solid rgba(92,109,255,0.25);
+    border-radius: 100px;
+    background: rgba(92,109,255,0.06);
+  }
+  .hero h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.03em;
+    line-height: 0.94;
+    margin-bottom: 20px;
+  }
+  .hero h1 span {
+    background: linear-gradient(135deg, var(--accent), #3b4ed8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero p {
+    color: var(--text-secondary);
+    font-size: 18px;
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  .hero .links {
+    margin-top: 32px;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .hero .links a {
+    padding: 12px 28px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .hero .links a.primary {
+    background: var(--dark);
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(17,20,31,0.18);
+  }
+  .hero .links a.primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(17,20,31,0.24); }
+  .hero .links a.secondary {
+    border: 1px solid var(--card-border);
+    color: var(--text);
+    background: var(--card-bg);
+    backdrop-filter: blur(8px);
+  }
+  .hero .links a.secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ── Tab Nav ── */
+  .tab-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(246,247,250,0.82);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--card-border);
+    padding: 0 24px;
+    display: flex;
+    justify-content: center;
+    gap: 2px;
+    overflow-x: auto;
+  }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-nav button {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-family: 'Manrope', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 18px 22px;
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+  }
+  .tab-nav button:hover { color: var(--text); }
+  .tab-nav button.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  /* ── Content ── */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  .doc-container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 56px 32px 120px;
+  }
+
+  /* ── Markdown ── */
+  .doc-container h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 12px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--card-border);
+  }
+  .doc-container h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-top: 56px;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(15,19,32,0.08);
+  }
+  .doc-container h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    margin-top: 36px;
+    margin-bottom: 12px;
+  }
+  .doc-container h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    margin-top: 24px;
+    margin-bottom: 8px;
+  }
+  .doc-container p {
+    margin-bottom: 16px;
+    color: var(--text-secondary);
+    font-size: 15px;
+  }
+  .doc-container strong { color: var(--text); font-weight: 600; }
+  .doc-container em { color: var(--text-muted); }
+  .doc-container a { color: var(--accent); text-decoration: none; font-weight: 500; }
+  .doc-container a:hover { text-decoration: underline; }
+  .doc-container ul, .doc-container ol {
+    margin-bottom: 16px;
+    padding-left: 22px;
+  }
+  .doc-container li {
+    margin-bottom: 6px;
+    color: var(--text-secondary);
+    font-size: 15px;
+  }
+
+  .doc-container blockquote {
+    border-left: 3px solid var(--accent);
+    padding: 20px 24px;
+    margin: 24px 0;
+    background: var(--accent-bg);
+    border-radius: 0 16px 16px 0;
+  }
+  .doc-container blockquote p { margin-bottom: 4px; color: var(--text-secondary); }
+  .doc-container blockquote strong { color: var(--text); }
+
+  .doc-container code {
+    background: rgba(92,109,255,0.08);
+    color: var(--accent);
+    padding: 2px 7px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  }
+  .doc-container pre {
+    background: var(--dark);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 24px;
+    overflow-x: auto;
+    margin: 16px 0 24px;
+    box-shadow: 0 24px 48px -38px rgba(15,19,32,0.35);
+  }
+  .doc-container pre code {
+    background: none;
+    color: #c8d6ff;
+    padding: 0;
+    font-size: 13px;
+    line-height: 1.65;
+  }
+
+  .doc-container hr {
+    border: none;
+    border-top: 1px solid rgba(15,19,32,0.08);
+    margin: 48px 0;
+  }
+
+  /* ── Tables ── */
+  .doc-container table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 16px 0 24px;
+    font-size: 14px;
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--card-bg);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 16px -8px rgba(15,19,32,0.08);
+  }
+  .doc-container thead th {
+    background: rgba(15,19,32,0.04);
+    color: var(--text-muted);
+    font-weight: 600;
+    text-align: left;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--card-border);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .doc-container tbody td {
+    padding: 12px 18px;
+    border-bottom: 1px solid rgba(15,19,32,0.06);
+    color: var(--text-secondary);
+    vertical-align: top;
+  }
+  .doc-container tbody tr:last-child td { border-bottom: none; }
+  .doc-container tbody tr:hover { background: rgba(92,109,255,0.03); }
+
+  /* ── Images ── */
+  .doc-container img {
+    max-width: 100%;
+    border-radius: 16px;
+    margin: 12px 0 20px;
+    border: 1px solid var(--card-border);
+    box-shadow: 0 24px 48px -38px rgba(15,19,32,0.3);
+  }
+
+  /* ── Scroll top ── */
+  .scroll-top {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    color: var(--accent);
+    font-size: 18px;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    z-index: 50;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 16px rgba(15,19,32,0.1);
+  }
+  .scroll-top:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(15,19,32,0.15); }
+  .scroll-top.visible { display: flex; }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    padding: 48px 24px;
+    color: var(--text-muted);
+    font-size: 13px;
+    border-top: 1px solid var(--card-border);
+  }
+  .footer a { color: var(--accent); text-decoration: none; font-weight: 500; }
+
+  @media (max-width: 640px) {
+    .hero { padding: 60px 20px 48px; }
+    .hero h1 { font-size: 34px; }
+    .hero p { font-size: 15px; }
+    .doc-container { padding: 32px 16px 80px; }
+    .doc-container h1 { font-size: 26px; }
+    .doc-container h2 { font-size: 20px; }
+    .tab-nav button { font-size: 12px; padding: 14px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Acquire.com Listing</div>
+    <h1>Morph <span>AI</span></h1>
+    <p>Your always-on chief of staff. AI-powered calendar and task management — supporting documents for potential buyers.</p>
+    <div class="links">
+      <a href="https://morph-ai.app" target="_blank" class="primary">Live Product</a>
+      <a href="https://www.youtube.com/watch?v=PuK_Ew2mhWs" target="_blank" class="secondary">Demo Video</a>
+    </div>
+  </div>
+</div>
+
+<nav class="tab-nav">
+  <button class="active" onclick="showTab(0)">Product Showcase</button>
+  <button onclick="showTab(1)">Technical Architecture</button>
+  <button onclick="showTab(2)">Revenue & Pricing</button>
+  <button onclick="showTab(3)">Market & Growth</button>
+  <button onclick="showTab(4)">Operations & Transfer</button>
+</nav>
+
+<div id="tab-0" class="tab-content active"><div class="doc-container" id="doc-0"></div></div>
+<div id="tab-1" class="tab-content"><div class="doc-container" id="doc-1"></div></div>
+<div id="tab-2" class="tab-content"><div class="doc-container" id="doc-2"></div></div>
+<div id="tab-3" class="tab-content"><div class="doc-container" id="doc-3"></div></div>
+<div id="tab-4" class="tab-content"><div class="doc-container" id="doc-4"></div></div>
+
+<div class="footer">
+  <a href="https://morph-ai.app" target="_blank">morph-ai.app</a> &middot; Built by Jungwoo Ahn
+</div>
+
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+
+<script>
+function showTab(i) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-nav button').forEach(el => el.classList.remove('active'));
+  document.getElementById('tab-' + i).classList.add('active');
+  document.querySelectorAll('.tab-nav button')[i].classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+window.addEventListener('scroll', () => {
+  document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 400);
+});
+
+const D = [];
+
+D[0] = `# Morph AI — Product Showcase
+
+> **Your always-on chief of staff.**
+> Create or update plans with text, image, PDF, audio, or web context — then let one context-aware assistant move your schedule forward.
+
+**Live Product:** [morph-ai.app](https://morph-ai.app)
+**Interactive Demo:** [morph-ai.app](https://morph-ai.app) (no login required for landing page demo)
+
+---
+
+## Demo Video
+
+[![Morph AI Demo Video](https://i.ytimg.com/vi/PuK_Ew2mhWs/hqdefault.jpg)](https://www.youtube.com/watch?v=PuK_Ew2mhWs)
+
+**[Watch the full product demo on YouTube](https://www.youtube.com/watch?v=PuK_Ew2mhWs)**
+
+*Note: This video was recorded during an earlier development stage. The current product is significantly more polished and feature-complete, with full Korean + English bilingual demo support. Visit [morph-ai.app](https://morph-ai.app) to see the latest version live.*
+
+---
+
+## What Morph Does
+
+Morph AI is an AI-powered calendar and task management assistant. Users interact via a natural language chat interface to create, update, search, and manage events and tasks — all synced bi-directionally with Google Calendar and Google Tasks.
+
+**Core value:** Event creation drops from 30 seconds (traditional UI) to 3 seconds (natural language).
+
+---
+
+## Core Features
+
+### 1. Natural Language Event & Task Creation
+
+Type what you need in plain English (or 9 other languages):
+
+| User says | Morph does |
+|---|---|
+| "Team sync tomorrow at 3pm" | Creates a 1-hour event for tomorrow at 3:00 PM |
+| "Birthday party Saturday 7-10pm at 21 Baker St, invite Daniel" | Creates event with location, time range, and attendee |
+| "Dentist every Wednesday 11am for 6 weeks" | Generates RRULE, creates recurring event with 6 instances |
+| "Submit project proposal by end of month" | Creates a task with due date |
+
+The AI parses intent, extracts structured data (title, date, time, location, attendees, recurrence), and presents a **preview card** for user confirmation before committing.
+
+---
+
+### 2. Image & PDF Event Extraction (GPT-4 Vision)
+
+Upload a screenshot, poster, flyer, or PDF — Morph extracts **all events** automatically.
+
+**Use cases:**
+- **Conference schedule poster** — Upload a photo, get 12 sessions extracted with titles, times, and locations
+- **University syllabus PDF** — Upload a 12-page PDF, get 30+ assignment deadlines and class schedules extracted
+- **FC Barcelona match schedule** — Upload a screenshot, get all home games added to your calendar
+- **Event flyer from Instagram** — Screenshot it, upload, done
+
+**No competitor offers this.** This is Morph's most unique feature — GPT-4 Vision-powered visual event extraction.
+
+---
+
+### 3. Voice Input (Audio Transcription)
+
+Record a voice memo or upload an audio file. Morph transcribes it and converts actionable items into events and tasks.
+
+**Example:** Record a call recap → Morph extracts "Follow-up meeting Thursday 2pm" and "Send proposal by Friday" → Creates one event + one task.
+
+---
+
+### 4. Web Search Integration
+
+Ask Morph to search the web for event details and add them to your calendar.
+
+**Example:** "Find the Warriors home game schedule and add the next 5 games to my calendar."
+
+---
+
+### 5. Semantic Search (RAG)
+
+Search your calendar and tasks by **meaning**, not just keywords.
+
+| User asks | What Morph finds |
+|---|---|
+| "When was my meeting with Kim about Q3 OKRs?" | "Q3 Planning Session" (Oct 15, 2:00 PM) — attendee: Kim |
+| "What decisions did we make about the launch?" | Finds events with relevant descriptions |
+| "What should I prep for Thursday's investor call?" | Surfaces related past meetings and tasks |
+
+**Powered by:** PostgreSQL pgvector embeddings + hybrid lexical/vector search with spelling correction.
+
+---
+
+### 6. Conversational Editing & Deletion
+
+- "Move my dentist appointment to next Wednesday 11am"
+- "Add location 123 Oak St to tomorrow's lunch meeting"
+- "Delete all yoga classes this month"
+- "Cancel the Friday standup"
+
+Each change shows a preview diff before applying.
+
+---
+
+### 7. Smart Schedule Summaries
+
+- "What do I have today?" → Clean daily overview with events and tasks
+- "What's my week look like?" → Day-by-day breakdown with overdue task alerts
+- "Am I free Thursday afternoon?" → Availability check
+
+---
+
+## User Interface
+
+### Three-Panel Layout
+
+| Left Panel | Center Panel | Right Panel |
+|---|---|---|
+| **Tasks** | **Calendar** | **AI Chat** |
+| Filter: All / Active / Done | Month / Week / Day views | Natural language input |
+| Sort: Custom, Due date, Title | Color-coded events by calendar | Preview cards for confirmation |
+| Drag-and-drop reorder | All-day event support | Message history |
+| Subtask hierarchy | Click to edit events | Multi-modal input (text, image, PDF, audio) |
+
+All three panels are collapsible for focused workflows.
+
+---
+
+## Multi-Language Support
+
+Morph's landing page and AI responses support **10 languages**: English, Korean, Chinese (Simplified), Hindi, Spanish, Arabic (with RTL), French, Portuguese, Russian, Japanese.
+
+---
+
+## Coming Soon: Proactive Mobile Notifications
+
+| Feature | What it does |
+|---|---|
+| **Daily Brief** | Morning summary: "3 meetings today, 2 tasks due, 1 conflict" |
+| **Gap-Fill Nudge** | "You have 45 min free before your 2pm — prep for investor call?" |
+| **Deadline Guard** | "Project proposal due in 2 days — you haven't started. Block time now?" |
+| **Commute Re-plan** | "Traffic on I-405 — leave 15 min early for your 3pm at the client office" |
+
+Already designed in the codebase — ready for a mobile developer to implement.
+
+---
+
+## Pricing
+
+| Plan | Price | Includes |
+|---|---|---|
+| **Starter (Free)** | $0/month | 100 chat messages, 10 image/PDF pages, 20 audio minutes, 2 web searches |
+| **Pro Monthly** | $12.99/month | 2,000 chat messages, 200 image/PDF pages, 200 audio minutes, 30 web searches |
+| **Pro Yearly** | $99/year (~$8.25/mo) | Same as Pro Monthly — **save 36%** |
+
+---
+
+## Try It Now
+
+- **Website:** [morph-ai.app](https://morph-ai.app)
+- **Demo Video:** [youtube.com/watch?v=PuK_Ew2mhWs](https://www.youtube.com/watch?v=PuK_Ew2mhWs)`;
+
+D[1] = `# Morph AI — Technical Architecture
+
+## Overview
+
+Morph AI is a production-grade Next.js 14 application. Fully written in TypeScript, uses Prisma ORM for type-safe database access, and is containerized with Docker for portable deployment.
+
+---
+
+## System Architecture
+
+\`\`\`
+┌──────────────────────────────────────────────────────┐
+│                 Frontend (Next.js 14)                 │
+│  ┌─────────┬──────────────────┬────────────────┐     │
+│  │  Tasks  │    Calendar      │     Chat       │     │
+│  │ Column  │  Month/Week/Day  │  AI Assistant  │     │
+│  └─────────┴──────────────────┴────────────────┘     │
+│  TanStack Query · Zustand · Tailwind · Radix UI      │
+└──────────────────────────────────────────────────────┘
+                        ↕ API Routes
+┌──────────────────────────────────────────────────────┐
+│              Backend (Next.js API Routes)             │
+│  /api/chat     → AI conversation, function calling   │
+│  /api/events   → Event CRUD                          │
+│  /api/tasks    → Task CRUD, reorder, subtasks        │
+│  /api/sync     → Google Calendar/Tasks sync          │
+│  /api/rag      → Semantic search, reindex            │
+│  /api/billing  → Checkout, subscription, manage      │
+│  /api/audio    → Transcription (Whisper)             │
+│  /api/webhooks → LemonSqueezy payments               │
+│  NextAuth.js · Prisma ORM · OpenAI GPT-4o            │
+└──────────────────────────────────────────────────────┘
+                        ↕
+┌──────────────────────────────────────────────────────┐
+│         Database (PostgreSQL + pgvector)              │
+│  17 models · vector embeddings on Event + Task       │
+└──────────────────────────────────────────────────────┘
+                        ↕
+┌──────────────────────────────────────────────────────┐
+│  Google Calendar API · Google Tasks API · OpenAI     │
+│  LemonSqueezy · Redis + BullMQ                       │
+└──────────────────────────────────────────────────────┘
+\`\`\`
+
+---
+
+## Tech Stack
+
+| Layer | Technology | Version |
+|---|---|---|
+| **Framework** | Next.js (App Router) | 14.2 |
+| **Language** | TypeScript | 5.4 |
+| **UI** | React + Tailwind CSS + Radix UI | 18.3 / 3.4 |
+| **State** | TanStack Query + Zustand | 5.28 / 4.5 |
+| **ORM** | Prisma | 6.19 |
+| **Database** | PostgreSQL + pgvector | — |
+| **Auth** | NextAuth.js | 4.24 |
+| **AI** | OpenAI SDK | 4.104 |
+| **Queue** | BullMQ + Redis (ioredis) | 5.4 / 5.3 |
+| **Billing** | LemonSqueezy API | — |
+| **Dates** | date-fns + chrono-node + rrule | 3.3 / 2.9 / 2.8 |
+| **Testing** | Vitest | 4.0 |
+| **Container** | Docker (node:20-alpine) | — |
+| **Deploy** | Railway | — |
+
+---
+
+## Database (17 Models)
+
+\`\`\`
+User 1───* Account (OAuth)
+User 1───1 Subscriber (billing)
+User 1───* Calendar 1───* Event (pgvector embedding)
+User 1───* TaskList 1───* Task (pgvector + subtasks)
+User 1───* Conversation 1───* Message
+User 1───* Document · SyncToken · UsageLog · OpsEvent · BillingEvent
+\`\`\`
+
+**Design highlights:** pgvector without separate vector DB, soft deletes, sync tokens for incremental Google sync, Serializable isolation for quota enforcement.
+
+---
+
+## AI Pipeline
+
+\`\`\`
+User message → Schedule snapshot → RAG search
+→ GPT-4o (function calling) → Preview card
+→ User confirms → DB + Google sync
+\`\`\`
+
+| Input | Processing |
+|---|---|
+| **Text** | GPT-4o with function calling |
+| **Image** | GPT-4 Vision → structured events |
+| **PDF** | pdfjs-dist → GPT-4o extraction |
+| **Audio** | Whisper → GPT-4o processing |
+| **Web** | Search → GPT-4o extraction |
+
+---
+
+## Deployment
+
+- **Docker** multi-stage build (deps → builder → runner)
+- **Railway**: 2 services (web + worker) from same image
+- Portable to any cloud with Docker support
+
+---
+
+## Code Quality
+
+| Area | Implementation |
+|---|---|
+| **Types** | TypeScript throughout + Prisma generated types |
+| **Validation** | Zod schemas |
+| **Testing** | Vitest |
+| **Linting** | ESLint + @typescript-eslint |
+| **Security** | RLS, OAuth encryption, HMAC webhook verification |`;
+
+D[2] = `# Morph AI — Revenue Model & Pricing
+
+## Pricing Tiers
+
+| | **Free** | **Pro Monthly** | **Pro Yearly** |
+|---|---|---|---|
+| **Price** | $0/mo | $12.99/mo | $99/yr (~$8.25/mo) |
+| **Chat Messages** | 100/mo | 2,000/mo | 2,000/mo |
+| **Image/PDF Pages** | 10/mo | 200/mo | 200/mo |
+| **Audio Minutes** | 20/mo | 200/mo | 200/mo |
+| **Web Searches** | 2/mo | 30/mo | 30/mo |
+| **Batch Limit** | 3 items | Unlimited | Unlimited |
+
+**Enterprise tier** exists in codebase — unlimited everything, ready to activate.
+
+---
+
+## Strategy
+
+- Free tier hooks users (100 msgs = ~3/day)
+- Batch limit of 3 drives upgrades — image extraction users hit the wall fast
+- 36% yearly discount reduces churn
+- Conservative vs competitors: Motion $34/mo, Reclaim $10/mo
+
+---
+
+## Billing Infrastructure (Production-Ready)
+
+\`\`\`
+Upgrade click → /api/billing/checkout → LemonSqueezy
+→ Payment → Webhook (HMAC verified)
+→ Subscriber record updated → Quota upgraded immediately
+\`\`\`
+
+| Endpoint | Purpose |
+|---|---|
+| \`POST /api/billing/checkout\` | Create checkout session |
+| \`GET /api/billing/status\` | Tier + usage + remaining |
+| \`POST /api/billing/subscription\` | Cancel / resume |
+| \`POST /api/webhooks/lemonsqueezy\` | Lifecycle events |
+
+Full audit trail via BillingEvent table (tier transitions, amounts, metadata).
+
+---
+
+## Quota Enforcement
+
+**Serializable transaction isolation** — atomic, race-condition-proof:
+
+\`\`\`
+1. Read user tier
+2. Count usage since month start (UTC)
+3. If within limit → allow + log
+4. If over limit → deny
+5. Commit atomically
+\`\`\`
+
+Unit costs configurable via env vars — no code changes needed.
+
+---
+
+## Unit Economics
+
+| Tier | Revenue | Variable Cost | Net Margin |
+|---|---|---|---|
+| **Free** | $0 | ~$0.30 | -$0.30 |
+| **Pro Monthly** | $12.99 | ~$1.22 (incl. LS fee) | **$11.77 (90.6%)** |
+| **Pro Yearly** | $8.25 | ~$0.99 | **$7.26 (88.0%)** |
+
+---
+
+## Revenue Upside
+
+1. **Price increase** — $12.99 → $19.99 still below Motion ($34)
+2. **Enterprise tier** — already in codebase, ready for B2B
+3. **Team tier** — designed at $15/user/mo (3-user min)
+4. **API productization** — sell calendar parsing pipeline standalone
+5. **Annual conversion** — lock revenue, reduce churn`;
+
+D[3] = `# Morph AI — Market & Growth Opportunity
+
+## Market
+
+- **Productivity software:** $96B (Gartner 2025)
+- **Calendar users:** 2B+ worldwide
+- **AI productivity tools:** ~30% CAGR
+- Google Calendar's core UX hasn't changed since 2006
+
+---
+
+## Competitive Landscape
+
+| Feature | **Morph** | Google Cal | Motion | Reclaim | Amie |
+|---|---|---|---|---|---|
+| **NLP Input** | GPT-4o | Limited | Yes | Yes | Limited |
+| **Image Extraction** | GPT-4 Vision | No | No | No | No |
+| **Chat UI** | Full | No | Limited | Limited | No |
+| **Semantic Search** | RAG | Keyword | Keyword | Limited | No |
+| **Multi-Language** | 10 langs | ~20 | English | English | English |
+| **Free Tier** | Yes | Yes | No | Limited | No |
+| **Pro Price** | $12.99 | Free | $34 | $10 | $7 |
+
+### Unique Advantages
+
+1. **Only product with GPT-4 Vision image extraction**
+2. **Full conversational UI** — primary interface, not add-on
+3. **RAG search** — no extra infra cost (pgvector)
+4. **10 languages** — most competitors English-only
+5. **Generous free tier** with clear upgrade path
+
+---
+
+## Target Customers
+
+| Segment | Value Prop | WTP |
+|---|---|---|
+| **Professionals** | Save 15+ min/day on scheduling | $10-20/mo |
+| **Students** | PDF syllabus → calendar magic | Free → Pro later |
+| **Freelancers** | Unified tasks + calendar | $10-15/mo |
+| **Teams** (future) | Shared calendars, admin | $15-25/user/mo |
+
+---
+
+## Growth Levers
+
+### 1. Mobile App (Designed, Ready to Build)
+Four proactive notifications already designed in codebase: Daily Brief, Gap-Fill Nudge, Deadline Guard, Commute Re-plan. **Highest-value growth lever.**
+
+### 2. Product Hunt Launch
+Product is launch-ready with polished landing page, interactive demo, YouTube video, working free tier. Typical AI productivity launches: 5,000-15,000 signups.
+
+### 3. SEO
+Multi-language landing page = SEO in 10 languages simultaneously.
+
+### 4. Outlook Integration
+Doubles addressable market. Sync architecture is modular.
+
+### 5. B2B / Teams
+Database supports multi-user. Ops dashboard already exists.
+
+### 6. API Productization
+AI calendar parsing as a standalone API.
+
+---
+
+## Pre-Built Marketing Assets
+
+| Asset | Status |
+|---|---|
+| Landing page (10 languages) | Live |
+| Interactive demo | Built in |
+| YouTube demo video | Published |
+| Pricing page | Live |
+| Privacy & Terms | Live |
+| Product overview (15+ pages) | Complete |
+| Investor pitch (60+ pages) | Complete |
+
+---
+
+## Why Now?
+
+1. AI tools are mainstream — users expect it
+2. No clear winner yet in AI calendar space
+3. First-mover on image extraction
+4. Remote work = calendar management matters more
+5. Product is ready — not an idea, a deployed SaaS`;
+
+D[4] = `# Morph AI — Operations & Transfer Guide
+
+## Why This Sale?
+
+Mandatory military service in the Republic of Korea (18-21 months). Not a distressed sale — product is fully built and deployed. Full transition support available before enlisting.
+
+---
+
+## Infrastructure
+
+| Service | Role | Provider |
+|---|---|---|
+| **Web** | Next.js HTTP | Railway |
+| **Worker** | BullMQ sync | Railway |
+| **Database** | PostgreSQL + pgvector | Railway |
+| **Cache** | Redis | Railway |
+| **Domain** | morph-ai.app | Registrar |
+
+Same Docker image for web + worker. One codebase, one build.
+
+---
+
+## Monthly Costs (< 100 users)
+
+| Item | Cost |
+|---|---|
+| Railway (web + worker) | ~$10-20 |
+| PostgreSQL | ~$5-15 |
+| Redis | ~$5-10 |
+| OpenAI API | ~$5-50 |
+| Domain | ~$1 |
+| **Total** | **~$25-95/mo** |
+
+---
+
+## What the Buyer Gets
+
+| Asset | Details |
+|---|---|
+| **Source code** | Next.js 14, TypeScript, full codebase |
+| **Database** | 17 Prisma models, pgvector |
+| **Docker** | Multi-stage build + Railway config |
+| **Landing page** | 10-language marketing site |
+| **Demo** | Interactive + YouTube video |
+| **Billing** | LemonSqueezy with webhooks |
+| **Domain** | morph-ai.app |
+| **Docs** | Product overview, pitch, quickstart |
+
+---
+
+## Day-1 Checklist
+
+### Keep Current Infra
+1. Transfer Railway project
+2. Transfer Google Cloud project
+3. Transfer LemonSqueezy store
+4. Transfer domain
+5. Update \`NEXTAUTH_SECRET\`
+6. Verify OAuth redirects
+7. Test full flow
+
+### Or Redeploy Fresh
+1. Clone repo → set up PostgreSQL + Redis
+2. Configure env vars → \`npm run db:push\`
+3. Docker build & deploy
+4. Set up Google OAuth + LemonSqueezy webhooks
+5. Transfer domain
+
+---
+
+## Environment Variables
+
+| Variable | Purpose |
+|---|---|
+| \`DATABASE_URL\` | PostgreSQL |
+| \`REDIS_URL\` | Redis |
+| \`NEXTAUTH_URL\` / \`NEXTAUTH_SECRET\` | Auth |
+| \`GOOGLE_CLIENT_ID\` / \`SECRET\` | OAuth |
+| \`OPENAI_API_KEY\` | AI |
+| \`LEMONSQUEEZY_API_KEY\` / \`WEBHOOK_SECRET\` / \`STORE_ID\` | Billing |
+
+---
+
+## Developer Onboarding
+
+\`\`\`bash
+npm install && npm run db:push && npm run dev  # port 3000
+npm run db:studio   # visual DB explorer
+npm run test        # Vitest
+\`\`\`
+
+---
+
+## Maintenance
+
+| Task | Frequency |
+|---|---|
+| Monitor OpenAI costs | Monthly |
+| Review logs | Weekly |
+| Dependency updates | Quarterly |
+| DB backups, SSL | Automated |
+
+OAuth refresh, sync engine, billing webhooks — all auto-handled.
+
+---
+
+## Transition Support
+
+1. Full code walkthrough (video call)
+2. Architecture docs (included)
+3. Deployment guide (step-by-step)
+4. Knowledge transfer Q&A
+5. Bug fixes during handover`;
+
+for (let i = 0; i < D.length; i++) {
+  document.getElementById('doc-' + i).innerHTML = marked.parse(D[i]);
+}
+</script>
+</body>
+</html>
