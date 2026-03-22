@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils'
 import { GoogleLogoIcon } from '@/components/marketing/google-logo-icon'
 
 const APP_URL = 'https://morph-ai.app'
+const BASE_PATH = '/morph-ai-docs'
 
 type NavActive = 'home' | 'pricing'
 type NavSectionKey = 'how-it-works' | 'demo'
@@ -191,7 +192,7 @@ export function MarketingNav({
           <div className="flex items-center justify-between py-3 md:hidden">
             <Link href={homeHref} className="flex min-w-0 items-center gap-2.5 transition-transform hover:scale-[1.01]">
               <div className="grid h-10 w-10 shrink-0 place-items-center overflow-hidden rounded-2xl border border-[#0f1320]/10 bg-white/85 shadow-sm">
-                <Image src="/morph_logo_new.svg" alt="Morph AI" width={28} height={28} priority />
+                <Image src={`${BASE_PATH}/morph_logo_new.svg`} alt="Morph AI" width={28} height={28} priority />
               </div>
               <div className="min-w-0">
                 <p className="truncate text-lg font-semibold leading-none tracking-tight text-[#0f1320]">
@@ -253,7 +254,7 @@ export function MarketingNav({
             <div className="justify-self-start">
               <Link href={homeHref} className="flex items-center gap-3 transition-transform hover:scale-[1.01]">
                 <div className="grid h-11 w-11 place-items-center overflow-hidden rounded-2xl border border-[#0f1320]/10 bg-white/85 shadow-sm">
-                  <Image src="/morph_logo_new.svg" alt="Morph AI" width={32} height={32} priority />
+                  <Image src={`${BASE_PATH}/morph_logo_new.svg`} alt="Morph AI" width={32} height={32} priority />
                 </div>
                 <div>
                   <p className="text-base font-semibold tracking-tight text-[#0f1320]">Morph AI</p>

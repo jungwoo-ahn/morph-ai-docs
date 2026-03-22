@@ -13,6 +13,7 @@ import {
 } from '@/components/marketing/landing-copy'
 
 const APP_URL = 'https://morph-ai.app'
+const BASE_PATH = '/morph-ai-docs'
 
 const displayFont = Space_Grotesk({
   subsets: ['latin'],
@@ -127,7 +128,7 @@ export function LandingPage({ lang = 'en' }: { lang?: LandingLanguage }) {
           <section className="pb-20">
             <div className="relative mx-auto w-full max-w-6xl overflow-hidden rounded-2xl border border-[#0f1320]/10 bg-white shadow-[0_32px_80px_-20px_rgba(15,19,32,0.25)]">
               <Image
-                src="/demo/text-screenshot-v2.png"
+                src={`${BASE_PATH}/demo/text-screenshot-v2.png`}
                 alt="Morph AI — Tasks, Calendar, and AI Chat in one view"
                 width={1920}
                 height={1080}

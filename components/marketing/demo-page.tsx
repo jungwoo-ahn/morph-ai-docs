@@ -14,6 +14,7 @@ import {
 } from 'lucide-react'
 
 const APP_URL = 'https://morph-ai.app'
+const BASE_PATH = '/morph-ai-docs'
 
 const displayFont = Space_Grotesk({
   subsets: ['latin'],
@@ -135,12 +136,12 @@ export const NAV_ITEMS = [
 ] as const
 
 const SOURCE_IMAGES = [
-  { src: '/demo/sources/ai-conference-timetable.png', alt: 'Conference timetable' },
-  { src: '/demo/sources/fcb-schedule.png', alt: 'Sports schedule' },
-  { src: '/demo/sources/messanger.png', alt: 'Messenger chat' },
-  { src: '/demo/sources/vc_email.png', alt: 'Email invite' },
-  { src: '/demo/sources/golf-lesosn-schedule.png', alt: 'Golf schedule' },
-  { src: '/demo/modern-algebra-class-anouncement.png', alt: 'Class announcement' },
+  { src: `${BASE_PATH}/demo/sources/ai-conference-timetable.png`, alt: 'Conference timetable' },
+  { src: `${BASE_PATH}/demo/sources/fcb-schedule.png`, alt: 'Sports schedule' },
+  { src: `${BASE_PATH}/demo/sources/messanger.png`, alt: 'Messenger chat' },
+  { src: `${BASE_PATH}/demo/sources/vc_email.png`, alt: 'Email invite' },
+  { src: `${BASE_PATH}/demo/sources/golf-lesosn-schedule.png`, alt: 'Golf schedule' },
+  { src: `${BASE_PATH}/demo/modern-algebra-class-anouncement.png`, alt: 'Class announcement' },
 ] as const
 
 const PROACTIVE_PHONES = [
