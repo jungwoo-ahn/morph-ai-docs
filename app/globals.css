@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --background: 220 20% 98%;
+    --foreground: 220 15% 15%;
+    --card: 220 25% 96%;
+    --card-foreground: 220 15% 15%;
+    --popover: 220 25% 96%;
+    --popover-foreground: 220 15% 15%;
+    --primary: 245 70% 58%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 15% 92%;
+    --secondary-foreground: 220 15% 20%;
+    --muted: 220 15% 94%;
+    --muted-foreground: 220 12% 50%;
+    --accent: 245 80% 94%;
+    --accent-foreground: 245 70% 35%;
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 20% 88%;
+    --input: 220 20% 90%;
+    --ring: 245 70% 58%;
+    --radius: 1rem;
+    --glass-bg: 220 25% 98%;
+    --glass-border: 220 20% 85%;
+    --glass-shadow: 220 20% 40%;
+    --glass-highlight: 0 0% 100%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html,
+  body {
+    height: 100%;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@keyframes marketing-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes marketing-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(45deg);
+  }
+  50% {
+    transform: translate3d(6px, -8px, 0) rotate(45deg);
+  }
+}
+
+@keyframes marketing-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-marketing-float {
+  animation: marketing-float 8s ease-in-out infinite;
+}
+
+.animate-marketing-drift {
+  animation: marketing-drift 7s ease-in-out infinite;
+}
+
+.animate-marketing-reveal {
+  animation: marketing-reveal 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes pipeline-pulse {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes pipeline-pulse-vertical {
+  0% { background-position: 0 -200%; }
+  100% { background-position: 0 200%; }
+}
+@keyframes node-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(92,109,255,0); }
+  50% { box-shadow: 0 0 20px 4px rgba(92,109,255,0.2); }
+}
+.animate-pipeline-line {
+  background: linear-gradient(90deg, transparent 0%, #5c6dff 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: pipeline-pulse 3s ease-in-out infinite;
+}
+.animate-pipeline-line-vertical {
+  background: linear-gradient(180deg, transparent 0%, #5c6dff 50%, transparent 100%);
+  background-size: 100% 200%;
+  animation: pipeline-pulse-vertical 3s ease-in-out infinite;
+}
+.animate-node-glow {
+  animation: node-glow 3s ease-in-out infinite;
+}

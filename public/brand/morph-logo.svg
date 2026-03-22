@@ -1,0 +1,49 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <g transform="rotate(180 100 100)">
+    <!-- Lines connecting dots -->
+    <!-- Line from center to top dot (dot 1) -->
+    <line x1="100" y1="100" x2="100" y2="30" stroke="#4c1d95" stroke-width="3"/>
+    
+    <!-- Line connecting dots 2-3 -->
+    <line x1="166.57696535396427" y1="78.36622005091095" x2="141.10678837626815" y2="156.63254915624212" stroke="#4c1d95" stroke-width="3"/>
+    
+    <!-- Line connecting dots 4-5 -->
+    <line x1="58.89321162373185" y1="156.63254915624212" x2="33.42303464603573" y2="78.36622005091095" stroke="#4c1d95" stroke-width="3"/>
+    
+    <!-- Dot 1 (top) - purple ring and purple fill -->
+    <g>
+      <circle cx="100" cy="30" r="21.6" fill="none" stroke="#4c1d95" stroke-width="1.6" opacity="0.3"/>
+      <circle cx="100" cy="30" r="12" fill="#4c1d95"/>
+    </g>
+    
+    <!-- Dot 2 - purple ring and purple fill -->
+    <g>
+      <circle cx="166.57696535396427" cy="78.36622005091095" r="21.6" fill="none" stroke="#4c1d95" stroke-width="1.6" opacity="0.3"/>
+      <circle cx="166.57696535396427" cy="78.36622005091095" r="12" fill="#4c1d95"/>
+    </g>
+    
+    <!-- Dot 3 - purple ring and purple fill -->
+    <g>
+      <circle cx="141.10678837626815" cy="156.63254915624212" r="21.6" fill="none" stroke="#4c1d95" stroke-width="1.6" opacity="0.3"/>
+      <circle cx="141.10678837626815" cy="156.63254915624212" r="12" fill="#4c1d95"/>
+    </g>
+    
+    <!-- Dot 4 - purple ring and purple fill -->
+    <g>
+      <circle cx="58.89321162373185" cy="156.63254915624212" r="21.6" fill="none" stroke="#4c1d95" stroke-width="1.6" opacity="0.3"/>
+      <circle cx="58.89321162373185" cy="156.63254915624212" r="12" fill="#4c1d95"/>
+    </g>
+    
+    <!-- Dot 5 - purple ring and purple fill -->
+    <g>
+      <circle cx="33.42303464603573" cy="78.36622005091095" r="21.6" fill="none" stroke="#4c1d95" stroke-width="1.6" opacity="0.3"/>
+      <circle cx="33.42303464603573" cy="78.36622005091095" r="12" fill="#4c1d95"/>
+    </g>
+    
+    <!-- Center dot - orange ring and purple fill -->
+    <g>
+      <circle cx="100" cy="100" r="21.6" fill="none" stroke="#c2410c" stroke-width="1.6" opacity="0.3"/>
+      <circle cx="100" cy="100" r="12" fill="#4c1d95"/>
+    </g>
+  </g>
+</svg>
