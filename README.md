@@ -37,40 +37,22 @@ Morph turns messy inputs into clean execution. One assistant loop handles **capt
 
 ---
 
-## Multi-modal input
+## AI-powered task planning
 
-Morph accepts any input format and converts it into structured calendar events and tasks.
-
-### Text
-
-Create, update, or manage events and tasks with natural language.
+Break down goals into subtasks and schedule focus time — all from a single message.
 
 <p align="center">
-  <img src="public/demo/chat-01-multi-event-generation.png" alt="Multi-event generation from text" width="600" />
+  <img src="public/demo/chat-02-task-planning.png" alt="AI task planning — break down goals into subtasks" width="100%" />
 </p>
 
-### Task planning
+---
 
-Break down goals into subtasks and schedule focus time automatically.
+## Recurring events in one message
 
-<p align="center">
-  <img src="public/demo/chat-02-task-planning.png" alt="Task planning demo" width="600" />
-</p>
-
-### Schedule summary
-
-Get a quick overview of your week — meetings, deadlines, and free blocks.
+Set up repeating schedules with natural language. Morph creates the events and syncs with Google Calendar.
 
 <p align="center">
-  <img src="public/demo/chat-03-schedule-summary.png" alt="Schedule summary" width="600" />
-</p>
-
-### Recurring events
-
-Set up repeating schedules with a single message.
-
-<p align="center">
-  <img src="public/demo/chat-04-recurring-plan.png" alt="Recurring event creation" width="600" />
+  <img src="public/demo/chat-04-recurring-plan.png" alt="Recurring event creation from natural language" width="100%" />
 </p>
 
 ---
@@ -89,16 +71,6 @@ Upload a photo of a conference schedule, class announcement, email, or messenger
   <img src="public/demo/sources/messanger.png" alt="Messenger chat" width="32%" />
   <img src="public/demo/sources/vc_email.png" alt="Email invite" width="32%" />
   <img src="public/demo/modern-algebra-class-anouncement.png" alt="Class announcement" width="32%" />
-</p>
-
----
-
-## Web search
-
-Ask Morph to look up sports schedules, holidays, tax deadlines, or travel plans — it searches the web and creates events automatically.
-
-<p align="center">
-  <img src="public/demo/chat-05-web-search-warriors.png" alt="Web search — Warriors games" width="600" />
 </p>
 
 ---
