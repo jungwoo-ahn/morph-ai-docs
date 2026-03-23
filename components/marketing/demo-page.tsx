@@ -12,8 +12,8 @@ import {
   Search,
   Zap,
 } from 'lucide-react'
+import { StaticDemoChat } from './static-demo-chat'
 
-const APP_URL = 'https://morph-ai.app'
 const BASE_PATH = '/morph-ai-docs'
 
 const displayFont = Space_Grotesk({
@@ -228,42 +228,6 @@ function ProactiveCard({
   )
 }
 
-function DemoIframe({
-  demoPromptKey,
-  className,
-}: {
-  demoPromptKey: string
-  className?: string
-}) {
-  const src = `${APP_URL}/demo-app?demoMode=marketing&demoPrompt=${demoPromptKey}&tasksPanel=collapsed`
-  return (
-    <div
-      className={cn(
-        'relative overflow-hidden rounded-2xl border border-[#0f1320]/10 bg-white shadow-lg',
-        className
-      )}
-    >
-      <iframe
-        key={demoPromptKey}
-        src={src}
-        className="h-[560px] w-full border-0"
-        loading="lazy"
-        title={`Morph AI demo: ${demoPromptKey}`}
-      />
-    </div>
-  )
-}
-
-function PromptBubble({ text }: { text: string }) {
-  return (
-    <div className="mt-6 flex justify-end">
-      <div className="max-w-lg rounded-2xl rounded-br-md bg-[#5c6dff] px-5 py-3.5 text-[15px] leading-relaxed text-white shadow-md">
-        {text}
-      </div>
-    </div>
-  )
-}
-
 function ScenarioTabs({
   scenarios,
   activeIndex,
@@ -343,8 +307,7 @@ export function DemoSection({ category }: { category: DemoCategory }) {
           onSelect={setActiveIndex}
         />
 
-        <DemoIframe demoPromptKey={activeScenario.demoPromptKey} />
-        <PromptBubble text={activeScenario.prompt} />
+        <StaticDemoChat demoPromptKey={activeScenario.demoPromptKey} />
 
         {category.id === 'rag' && (
           <div className="mt-12 grid gap-4 sm:grid-cols-3">

@@ -22,6 +22,12 @@
 
 <p align="center"><em>Tasks &middot; Calendar &middot; AI Chat — all in one view</em></p>
 
+<p align="center">
+  <img src="public/demo/chat-usecases-demo.gif" alt="Morph AI demo reel — text, image, audio, and web search" width="100%" />
+</p>
+
+<p align="center"><em>One assistant for text, images, audio, and web search</em></p>
+
 ---
 
 ## How it works
@@ -37,7 +43,19 @@ Morph turns messy inputs into clean execution. One assistant loop handles **capt
 
 ---
 
-## AI-powered task planning
+## Text input
+
+Type naturally — Morph creates events, plans tasks, summarizes schedules, and sets up recurring patterns from a single message.
+
+### Multi-event creation
+
+Add multiple events in one message. Morph parses each one and queues them for your calendar.
+
+<p align="center">
+  <img src="public/demo/chat-01-multi-event-generation.png" alt="Multi-event creation from a single message" width="100%" />
+</p>
+
+### AI-powered task planning
 
 Break down goals into subtasks and schedule focus time — all from a single message.
 
@@ -45,9 +63,15 @@ Break down goals into subtasks and schedule focus time — all from a single mes
   <img src="public/demo/chat-02-task-planning.png" alt="AI task planning — break down goals into subtasks" width="100%" />
 </p>
 
----
+### Schedule summary
 
-## Recurring events in one message
+Ask "What does my week look like?" and get a structured overview of meetings, deadlines, and free blocks.
+
+<p align="center">
+  <img src="public/demo/chat-03-schedule-summary.png" alt="AI-generated weekly schedule summary" width="100%" />
+</p>
+
+### Recurring events
 
 Set up repeating schedules with natural language. Morph creates the events and syncs with Google Calendar.
 
@@ -72,6 +96,36 @@ Upload a photo of a conference schedule, class announcement, email, or messenger
   <img src="public/demo/sources/vc_email.png" alt="Email invite" width="32%" />
   <img src="public/demo/modern-algebra-class-anouncement.png" alt="Class announcement" width="32%" />
 </p>
+
+---
+
+## Audio
+
+Record a voice memo, capture a call, or dictate updates. Whisper transcribes the audio, then GPT-4o extracts events and tasks automatically.
+
+- **Call recordings** — extract action items and schedule follow-ups
+- **Voice memos** — pull out events and reminders from quick dictations
+- **Client calls** — summarize key decisions and create follow-up events
+
+---
+
+## Web search
+
+Ask Morph to look up sports schedules, holidays, deadlines, or travel plans — it searches the web and creates events automatically.
+
+<p align="center">
+  <img src="public/demo/chat-05-web-search-warriors.png" alt="Web search — find Warriors games and add to calendar" width="100%" />
+</p>
+
+---
+
+## Semantic search
+
+Powered by pgvector embeddings. Ask contextual questions about past events, workload patterns, or upcoming preparations.
+
+- *"When is my next homework due?"*
+- *"How many hours did I spend in meetings last month?"*
+- *"What was the outcome of my last 1-on-1 with Jake?"*
 
 ---
 
