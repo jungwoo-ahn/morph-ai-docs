@@ -47,6 +47,13 @@ async function main() {
   // Wait for client-side hydration and rendering
   await page.waitForTimeout(5000)
 
+  // Hide sticky nav and tab bars so they don't appear in screenshots
+  await page.evaluate(() => {
+    document.querySelectorAll('header, nav').forEach(el => el.style.display = 'none')
+    // Hide the sticky category tab bar
+    document.querySelectorAll('.sticky').forEach(el => el.style.display = 'none')
+  })
+
   // Debug: log all section IDs found
   const sectionIds = await page.evaluate(() => {
     return Array.from(document.querySelectorAll('section[id]')).map(el => el.id)
@@ -82,15 +89,29 @@ async function main() {
       }
     }
 
-    // Find the StaticDemoChat container - it has rounded-2xl and overflow-y-auto
+    // Find the StaticDemoChat container (has both max-h-[560px] and overflow-y-auto)
     const section = page.locator(`#${sectionId}`)
-    const chatContainer = section.locator('div.rounded-2xl.border').first()
+    const chatContainer = section.locator('div.overflow-y-auto.rounded-2xl').first()
 
     if (await chatContainer.count() > 0) {
+      // Remove max-height and overflow clipping so full content is captured
+      await chatContainer.evaluate((el) => {
+        el.style.maxHeight = 'none'
+        el.style.overflow = 'visible'
+      })
+      await page.waitForTimeout(300)
+
       await chatContainer.screenshot({
         path: path.join(DEMO_DIR, filename),
         type: 'png',
       })
+
+      // Restore original styles
+      await chatContainer.evaluate((el) => {
+        el.style.maxHeight = ''
+        el.style.overflow = ''
+      })
+
       console.log(`  ✓ Saved ${filename}`)
     } else {
       console.log(`  ✗ Chat container not found in section ${sectionId}`)
