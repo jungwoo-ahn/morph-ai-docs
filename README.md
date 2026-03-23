@@ -97,15 +97,41 @@ Upload a photo of a conference schedule, class announcement, email, or messenger
   <img src="public/demo/modern-algebra-class-anouncement.png" alt="Class announcement" width="32%" />
 </p>
 
+### Conference schedule &rarr; filtered events
+
+<p align="center">
+  <img src="public/demo/chat-img-conference.png" alt="Image input — extract conference events by speaker" width="100%" />
+</p>
+
+### Messenger chat &rarr; events + tasks
+
+<p align="center">
+  <img src="public/demo/chat-img-messenger.png" alt="Image input — extract plans from messenger" width="100%" />
+</p>
+
+### Email invite &rarr; meeting + prep tasks
+
+<p align="center">
+  <img src="public/demo/chat-img-email.png" alt="Image input — parse email invite into calendar event" width="100%" />
+</p>
+
 ---
 
 ## Audio
 
 Record a voice memo, capture a call, or dictate updates. Whisper transcribes the audio, then GPT-4o extracts events and tasks automatically.
 
-- **Call recordings** — extract action items and schedule follow-ups
-- **Voice memos** — pull out events and reminders from quick dictations
-- **Client calls** — summarize key decisions and create follow-up events
+### Call recording &rarr; events + action items
+
+<p align="center">
+  <img src="public/demo/chat-audio-call.png" alt="Audio input — extract events from call recording" width="100%" />
+</p>
+
+### Voice memo &rarr; event + task
+
+<p align="center">
+  <img src="public/demo/chat-audio-memo.png" alt="Audio input — transcribe voice memo into events" width="100%" />
+</p>
 
 ---
 
@@ -113,8 +139,16 @@ Record a voice memo, capture a call, or dictate updates. Whisper transcribes the
 
 Ask Morph to look up sports schedules, holidays, deadlines, or travel plans — it searches the web and creates events automatically.
 
+### Sports schedule lookup
+
 <p align="center">
   <img src="public/demo/chat-05-web-search-warriors.png" alt="Web search — find Warriors games and add to calendar" width="100%" />
+</p>
+
+### Federal holidays
+
+<p align="center">
+  <img src="public/demo/chat-web-holidays.png" alt="Web search — add US federal holidays to calendar" width="100%" />
 </p>
 
 ---
@@ -123,9 +157,17 @@ Ask Morph to look up sports schedules, holidays, deadlines, or travel plans — 
 
 Powered by pgvector embeddings. Ask contextual questions about past events, workload patterns, or upcoming preparations.
 
-- *"When is my next homework due?"*
-- *"How many hours did I spend in meetings last month?"*
-- *"What was the outcome of my last 1-on-1 with Jake?"*
+### Assignment lookup
+
+<p align="center">
+  <img src="public/demo/chat-rag-homework.png" alt="Semantic search — look up homework details" width="100%" />
+</p>
+
+### Workload summary
+
+<p align="center">
+  <img src="public/demo/chat-rag-hours.png" alt="Semantic search — meeting hours analysis" width="100%" />
+</p>
 
 ---
 
@@ -134,13 +176,14 @@ Powered by pgvector embeddings. Ask contextual questions about past events, work
 Morph monitors your schedule 24/7 and sends intelligent nudges before you ask.
 
 <p align="center">
-  <img src="public/demo/proactive/proactive-mobile-gap-fill.png" alt="Gap-fill nudge" width="22%" />
-  <img src="public/demo/proactive/proactive-mobile-deadline-guard.png" alt="Deadline guard" width="22%" />
-  <img src="public/demo/proactive/proactive-mobile-commute-replan.png" alt="Commute replan" width="22%" />
-  <img src="public/demo/proactive/proactive-mobile-daily-brief.png" alt="Daily brief" width="22%" />
+  <img src="public/demo/proactive/proactive-cards.png" alt="Proactive AI — gap fill, deadline guard, commute replan, daily brief" width="100%" />
 </p>
 
 <p align="center"><em>Gap-fill &bull; Deadline guard &bull; Commute replan &bull; Daily brief</em></p>
+
+<p align="center">
+  <img src="public/demo/proactive/proactive-chat-demo.png" alt="Proactive AI — automated prep block and task creation" width="100%" />
+</p>
 
 ---
 
